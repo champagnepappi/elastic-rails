@@ -71,4 +71,11 @@ class PostsController < ApplicationController
     def post_params
       params.fetch(:post, {})
     end
+
+    def search
+      query = params[:search_posts].presence && params[:search_posts][:query]
+      if query
+        @posts = Post.search_published(query)
+      end
+    end
 end
