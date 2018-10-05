@@ -4,3 +4,23 @@
   <%= form.text_field :query, value: params[:search_posts].presence && params[:search_posts][:query] %>
   <%= form.submit 'Search' %>
 <% end %>
+
+<% unless @posts.nil? %>
+  <% if @posts.empty? %>
+    <h2>No posts found matching your query</h2>
+  <% else%>
+    <h2>Search results</h2>
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Tags</th>
+          <th>Published On</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+    </table>
+    <% end %>
+
+  <% end %>
